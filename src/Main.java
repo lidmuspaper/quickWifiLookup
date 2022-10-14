@@ -11,15 +11,15 @@ import static java.lang.System.exit;
 
 public class Main {
     public static void main(String[] args) {
-        File[] listOfFiles = new File[0];
+        File[] files = new File[0];
         String path = System.getProperty("user.home") + "\\Downloads\\";
         try {
             File folder = new File(path);
-            listOfFiles = folder.listFiles();
+            files = folder.listFiles();
 
-            for (int i = 0; i < listOfFiles.length; i++) {
-                if (listOfFiles[i].isFile() && listOfFiles[i].getName().endsWith(".txt")) {
-                    System.out.println(i+1 + ") " + listOfFiles[i].getName());
+            for (int i = 0; i < files.length; i++) {
+                if (files[i].getName().endsWith(".txt")) {
+                    System.out.println(i+1 + ") " + files[i].getName());
                 }
             }
         } catch (NullPointerException e) {
@@ -34,7 +34,7 @@ public class Main {
             try {
                 System.out.print("Choose File Index: ");
                 int fileindex = Integer.parseInt(sc.nextLine()) - 1;
-                filename = listOfFiles[fileindex].getName();
+                filename = files[fileindex].getName();
                 if (!filename.endsWith(".txt")) {
                     throw new NullPointerException();
                 }
